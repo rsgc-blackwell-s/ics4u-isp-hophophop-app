@@ -18,6 +18,7 @@
 		3FD97DDE1E51F80300130242 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DDD1E51F80300130242 /* example.png */; };
 		3FD97DE01E51F91F00130242 /* example 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DDF1E51F91F00130242 /* example 2.png */; };
 		3FD97DE31E5267CA00130242 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3FD97DE21E5267CA00130242 /* README.md */; };
+		3FD97DE51E526AE100130242 /* bigsean.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DE41E526AE100130242 /* bigsean.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3FD97DDD1E51F80300130242 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = example.png; path = "Hop Hop Hop/example.png"; sourceTree = "<group>"; };
 		3FD97DDF1E51F91F00130242 /* example 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "example 2.png"; sourceTree = "<group>"; };
 		3FD97DE21E5267CA00130242 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3FD97DE41E526AE100130242 /* bigsean.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bigsean.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				3FD97DE21E5267CA00130242 /* README.md */,
 				3FD97DDD1E51F80300130242 /* example.png */,
+				3FD97DE41E526AE100130242 /* bigsean.jpeg */,
 			);
 			name = "Project Proposal";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FD97DDE1E51F80300130242 /* example.png in Resources */,
+				3FD97DE51E526AE100130242 /* bigsean.jpeg in Resources */,
 				3FD97DE01E51F91F00130242 /* example 2.png in Resources */,
 				3FD97DD11E51F79800130242 /* Main.storyboard in Resources */,
 				3FD97DC81E51F79800130242 /* GameScene.sks in Resources */,
