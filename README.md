@@ -60,6 +60,7 @@ Modify this document and add your responses to the following prompts below.
 
 -When the app is first launched you will be presented with the following:
 
+
 // Example
 ![bigsean](https://raw.githubusercontent.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/68b16a1163c0a955f80828cf269103a817acaf5f/Hop%20Hop%20Hop/bigsean.jpeg)
 
