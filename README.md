@@ -29,48 +29,38 @@ Modify this document and add your responses to the following prompts below.
 
 ### What problem will your application solve?
 
-*Write a paragraph to describe the utility of your application. This applies equally for games. When would someone use your application? Why would they use your application?*
-
-Replace this with your paragraph(s).
+*The everyday life of the average city-liver is stressful - we get it! You are consistently faced with empty time scattered throughout your precious day. Why not use that time to take a break, and challenge yourself with a simple game? While you're hop-hop-hopping from place to place, why not play 'Hop Hop Hop'?! The game exists in a world of floating sushi, where you must jump from piece to piece in order to stay afloat of the broken fortune cookies and chopsticks (ouch!). Studies have proven that small and challenging acts spread periodically throughout your day are not only brain-productive, but also fun!*
 
 ### What is your inspiration for this project?
 
-*Have you seen another application that you wish to improve on? Has someone asked you to create this?*
-
-Replace this with your paragraph(s).
+*I am inspired by simple-looking, no-need-for-instruction applications. They are great ways to pass time, and have a massive market and demand at the moment. Why not jump onto the bandwagon? I have always been curious as to how the applications are built, and much like my 'Copter' game, enjoy the challenge of 'simple'.*
 
 ### What is your prior experience in this area?
 
-*Have you written an application like this before? Have you made use of any required APIs before?*
-
-Replace this with your paragraph(s).
+*I have no experience with SpriteKit, but I have experience in simple Java and understand the needed features of such an app.*
 
 ### What are skills do you hope to acquire by completing this project?
 
-*For example, you might be writing a networked application for the first time. Or, you may be writing an application that requires a particularly well designed user interface. Describe what you expect to learn by writing this application.*
-
-Replace this with your paragraph(s).
+*I would like to learn the basics of SpriteKit and 2D physics-based applications. This seems like a fair enough challenge considering my lack of past experience on the subject.*
 
 ### What dependencies, if any, will be required to complete your project?
 
-*If you are writing a networked application, you might be using an API like Alamofire to simplify that part of the implementation. If you are writing an application that communicates over Bluetooth, you may be using the Core Bluetooth framework. Please list any expected dependencies for your project.*
-
-Replace this with your paragraph(s).
+*SpriteKit, and, of course, Mr. Gordon.*
 
 ### Rate the personal difficulty level of this project.
 
-Replace this with your paragraph(s).
+*I tend to lack understanding of Swift sytax [as well as the language itself], in comparison to other students in the ICS4U class. So I feel that this project will be immensely difficult for me.*
 
 ### Identify what you think your biggest challenge for successfully completing this ISP will be.
 
-Replace this with your paragraph(s).
+*Time-management, as well as staying focused on the functionality [as oppose to just the graphics and small details].*
 
 ### Make storyboards to indicate the user interface and/or functionality of your application.
 
 *In the section below, sketch out a plan for your application. This is where you will spend the majority of your time in completing the ISP proposal. Think through what you hope to create and as needed, adjust your responses to the questions above.*
 
-Replace this with your images and paragraphs.
 
+// Example
 ![bigsean](https://raw.githubusercontent.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/68b16a1163c0a955f80828cf269103a817acaf5f/Hop%20Hop%20Hop/bigsean.jpeg)
 
 
