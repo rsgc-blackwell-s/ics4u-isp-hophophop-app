@@ -56,9 +56,9 @@ Modify this document and add your responses to the following prompts below.
 *Time-management, as well as staying focused on the functionality [as oppose to just the graphics and small details].*
 
 ### Make storyboards to indicate the user interface and/or functionality of your application.
+// Hop Hop Hop
 
-*In the section below, sketch out a plan for your application. This is where you will spend the majority of your time in completing the ISP proposal. Think through what you hope to create and as needed, adjust your responses to the questions above.*
-
+-When the app is first launched you will be presented with the following:
 
 // Example
 ![bigsean](https://raw.githubusercontent.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/68b16a1163c0a955f80828cf269103a817acaf5f/Hop%20Hop%20Hop/bigsean.jpeg)
