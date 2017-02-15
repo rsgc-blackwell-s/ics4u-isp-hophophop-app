@@ -65,3 +65,4 @@ Modify this document and add your responses to the following prompts below.
 ![bigsean](https://raw.githubusercontent.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/68b16a1163c0a955f80828cf269103a817acaf5f/Hop%20Hop%20Hop/bigsean.jpeg)
 
 
+– ISP needs to be described within this README file to facilitate feedback using project management software. You will have time to attend to this today in class. 
