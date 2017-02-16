@@ -15,11 +15,11 @@
 		3FD97DD11E51F79800130242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DCF1E51F79800130242 /* Main.storyboard */; };
 		3FD97DD31E51F79800130242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DD21E51F79800130242 /* Assets.xcassets */; };
 		3FD97DD61E51F79800130242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DD41E51F79800130242 /* LaunchScreen.storyboard */; };
-		3FD97DE31E5267CA00130242 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3FD97DE21E5267CA00130242 /* README.md */; };
 		3FD97DE71E52B01B00130242 /* HHH-initial.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DE61E52B01B00130242 /* HHH-initial.jpeg */; };
 		3FD97DE91E52B02300130242 /* HHH-gameplay.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DE81E52B02300130242 /* HHH-gameplay.jpeg */; };
 		3FD97DEB1E52B02E00130242 /* HHH-gameover.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DEA1E52B02E00130242 /* HHH-gameover.jpeg */; };
 		3FD97DED1E52B03500130242 /* HHH-optionsmenu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DEC1E52B03500130242 /* HHH-optionsmenu.jpeg */; };
+		3FD97DF01E56211300130242 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3FD97DEF1E56211300130242 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,11 +33,11 @@
 		3FD97DD21E51F79800130242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FD97DD51E51F79800130242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FD97DD71E51F79800130242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FD97DE21E5267CA00130242 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3FD97DE61E52B01B00130242 /* HHH-initial.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-initial.jpeg"; sourceTree = "<group>"; };
 		3FD97DE81E52B02300130242 /* HHH-gameplay.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-gameplay.jpeg"; sourceTree = "<group>"; };
 		3FD97DEA1E52B02E00130242 /* HHH-gameover.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-gameover.jpeg"; sourceTree = "<group>"; };
 		3FD97DEC1E52B03500130242 /* HHH-optionsmenu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-optionsmenu.jpeg"; sourceTree = "<group>"; };
+		3FD97DEF1E56211300130242 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +87,11 @@
 		3FD97DE11E52678500130242 /* Project Proposal */ = {
 			isa = PBXGroup;
 			children = (
-				3FD97DE21E5267CA00130242 /* README.md */,
 				3FD97DE61E52B01B00130242 /* HHH-initial.jpeg */,
 				3FD97DE81E52B02300130242 /* HHH-gameplay.jpeg */,
 				3FD97DEA1E52B02E00130242 /* HHH-gameover.jpeg */,
 				3FD97DEC1E52B03500130242 /* HHH-optionsmenu.jpeg */,
+				3FD97DEF1E56211300130242 /* README.md */,
 			);
 			name = "Project Proposal";
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			files = (
 				3FD97DCC1E51F79800130242 /* GameScene.swift in Sources */,
 				3FD97DCE1E51F79800130242 /* GameViewController.swift in Sources */,
-				3FD97DE31E5267CA00130242 /* README.md in Sources */,
+				3FD97DF01E56211300130242 /* README.md in Sources */,
 				3FD97DC61E51F79800130242 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
