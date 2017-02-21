@@ -59,9 +59,14 @@ Modify this document and add your responses to the following prompts below.
 // Hop Hop Hop
 
 -When the app is first launched you will be presented with the following:
-
-
-// Example
+-The application will open to the 'initial' screen, which displays just a highscore and the option to play the game.
 ![home](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-gameplay.jpeg?raw=true)
 
+-Once the screen is clicked, the application transitions to the 'gameplay' screen, which requires the user to jump from sushi-roll to sushi-roll by the means of either force touch (the harder you push, the more acceleration your player receives) or 'drag-to-shoot'. Deciding between these two options will take place in the options menu.
+![gameplay](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-gameplay.jpeg?raw=true)
 
+-When the game ends, the 'gameover' screen is shown, which displays the received score and the option to play again.
+![gameover](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-gameover.jpeg?raw=true)
+
+-The options menu looks like a normal options menu, and gives the user the option to resume, return to the main screen, see instructions, turn on/off sound, and toggle force touch functionality.
+![optionsmenu](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-optionsmenu.jpeg?raw=true)
