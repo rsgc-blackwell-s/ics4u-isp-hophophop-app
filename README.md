@@ -60,7 +60,7 @@ Modify this document and add your responses to the following prompts below.
 
 -When the app is first launched you will be presented with the following:
 -The application will open to the 'initial' screen, which displays just a highscore and the option to play the game.
-![home](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-initial.jpeg?raw=true)
+![initial](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-initial.jpeg?raw=true)
 
 -Once the screen is clicked, the application transitions to the 'gameplay' screen, which requires the user to jump from sushi-roll to sushi-roll by the means of either force touch (the harder you push, the more acceleration your player receives) or 'drag-to-shoot'. Deciding between these two options will take place in the options menu.
 ![gameplay](https://github.com/rsgc-blackwell-s/ics4u-isp-hophophop-app/blob/master/Hop%20Hop%20Hop/HHH-gameplay.jpeg?raw=true)
