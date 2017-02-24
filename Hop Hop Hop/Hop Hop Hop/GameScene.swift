@@ -33,11 +33,17 @@ class GameScene: SKScene {
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
         
-        let actionJumpUp = SKAction.moveBy(x: 0, y: 200, duration: 1.5)
-        let actionJumpDown = SKAction.moveBy(x: 0, y: -200, duration: 1.5)
+        let actionJumpUp = SKAction.moveBy(x: 0, y: 200, duration: 1)
+        let actionJumpDown = SKAction.moveBy(x: 0, y: -200, duration: 1)
         
         let actionJumpSequence = SKAction.sequence([actionJumpUp, actionJumpDown])
+    
+    func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         karateKidNode.run(actionJumpSequence)
-            }
+        
+        print ("Touched.")
+      
+    }
+    }
     }
