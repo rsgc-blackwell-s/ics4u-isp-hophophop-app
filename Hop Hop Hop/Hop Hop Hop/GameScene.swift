@@ -32,5 +32,12 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
+        
+        let actionJumpUp = SKAction.moveBy(x: 0, y: 200, duration: 1.5)
+        let actionJumpDown = SKAction.moveBy(x: 0, y: -200, duration: 1.5)
+        
+        let actionJumpSequence = SKAction.sequence([actionJumpUp, actionJumpDown])
+        
+        karateKidNode.run(actionJumpSequence)
             }
     }
