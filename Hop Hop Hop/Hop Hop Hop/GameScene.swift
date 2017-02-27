@@ -58,4 +58,8 @@ class GameScene: SKScene {
         karateKidNode.run(actionJumpSequence)
         
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("test")
+    }
 }
