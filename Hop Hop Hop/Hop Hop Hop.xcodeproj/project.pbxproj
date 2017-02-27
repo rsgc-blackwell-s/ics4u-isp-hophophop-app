@@ -20,7 +20,6 @@
 		3FD97DEB1E52B02E00130242 /* HHH-gameover.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DEA1E52B02E00130242 /* HHH-gameover.jpeg */; };
 		3FD97DED1E52B03500130242 /* HHH-optionsmenu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DEC1E52B03500130242 /* HHH-optionsmenu.jpeg */; };
 		3FD97DF01E56211300130242 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3FD97DEF1E56211300130242 /* README.md */; };
-		3FD97DF21E609EBE00130242 /* b0eb3e20093725.562e563da7d9a.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DF11E609EBE00130242 /* b0eb3e20093725.562e563da7d9a.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 		3FD97DEA1E52B02E00130242 /* HHH-gameover.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-gameover.jpeg"; sourceTree = "<group>"; };
 		3FD97DEC1E52B03500130242 /* HHH-optionsmenu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HHH-optionsmenu.jpeg"; sourceTree = "<group>"; };
 		3FD97DEF1E56211300130242 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		3FD97DF11E609EBE00130242 /* b0eb3e20093725.562e563da7d9a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b0eb3e20093725.562e563da7d9a.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 				3FD97DD21E51F79800130242 /* Assets.xcassets */,
 				3FD97DD41E51F79800130242 /* LaunchScreen.storyboard */,
 				3FD97DD71E51F79800130242 /* Info.plist */,
-				3FD97DF11E609EBE00130242 /* b0eb3e20093725.562e563da7d9a.png */,
 			);
 			path = "Hop Hop Hop";
 			sourceTree = "<group>";
@@ -159,7 +156,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FD97DF21E609EBE00130242 /* b0eb3e20093725.562e563da7d9a.png in Resources */,
 				3FD97DEB1E52B02E00130242 /* HHH-gameover.jpeg in Resources */,
 				3FD97DD11E51F79800130242 /* Main.storyboard in Resources */,
 				3FD97DE71E52B01B00130242 /* HHH-initial.jpeg in Resources */,

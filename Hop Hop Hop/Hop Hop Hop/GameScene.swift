@@ -52,7 +52,7 @@ class GameScene: SKScene {
         
     }
     
-    // When screen is touched
+    // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         karateKidNode.run(actionJumpSequence)
