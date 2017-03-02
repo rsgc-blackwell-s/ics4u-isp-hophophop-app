@@ -20,6 +20,15 @@ class GameScene: SKScene {
     //Initial functions
     override func didMove(to view: SKView) {
         
+        // Creating physics effects
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
+        
+        // Creating physics boundries
+        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        sceneBody.friction = 0
+        self.physicsBody = sceneBody
+        
+        
         // Making background
         let background = SKSpriteNode(imageNamed: "fortuneCookieBackground")
         background.position = CGPoint(x: self.size.height*0, y: self.frame.width*0)
