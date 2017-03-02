@@ -23,10 +23,17 @@ class GameScene: SKScene {
         // Creating physics effects
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
+//        //Creating jump effect
+//        self.physicsWorld.add(<#T##joint: SKPhysicsJoint##SKPhysicsJoint#>) = CGVector(dx: 0.0, dy: 20.0)
+        
         // Creating physics boundries
         let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         sceneBody.friction = 0
         self.physicsBody = sceneBody
+        
+        let karateBody = SKPhysicsBody(circleOfRadius: 180, center: karateKidNode.position)
+        karateBody.friction = 0
+        self.physicsBody = karateBody
         
         
         // Making background
@@ -57,7 +64,7 @@ class GameScene: SKScene {
         karateKidNode.physicsBody?.linearDamping = 0
         
         // Declare regularly used actions
-        actionJumpUp = SKAction.moveBy(x: 0, y: 200, duration: 1)
+        actionJumpUp = SKAction.applyForce(self.physicsWorld.gravity, duration: 2)
         actionJumpDown = SKAction.moveBy(x: 0, y: -200, duration: 1)
         
         // Decalaring sequence
