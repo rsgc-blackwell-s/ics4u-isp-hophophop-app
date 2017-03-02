@@ -51,6 +51,10 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
+//        karateKidNode.physicsBody = SKPhysicsBody(SKPhysicsBody(rectangleOf: karateKidNode.size, center: karateKidNode.position))
+        karateKidNode.physicsBody?.affectedByGravity = true
+        karateKidNode.physicsBody?.restitution = 0.01
+        karateKidNode.physicsBody?.linearDamping = 0
         
         // Declare regularly used actions
         actionJumpUp = SKAction.moveBy(x: 0, y: 200, duration: 1)
