@@ -23,18 +23,10 @@ class GameScene: SKScene {
         // Creating physics effects
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
-//        //Creating jump effect
-//        self.physicsWorld.add(<#T##joint: SKPhysicsJoint##SKPhysicsJoint#>) = CGVector(dx: 0.0, dy: 20.0)
-        
         // Creating physics boundries
-        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(0), dy: CGFloat(80)))
         sceneBody.friction = 0
         self.physicsBody = sceneBody
-        
-        let karateBody = SKPhysicsBody(circleOfRadius: 180, center: karateKidNode.position)
-        karateBody.friction = 0
-        self.physicsBody = karateBody
-        
         
         // Making background
         let background = SKSpriteNode(imageNamed: "fortuneCookieBackground")
@@ -58,24 +50,18 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
-//        karateKidNode.physicsBody = SKPhysicsBody(SKPhysicsBody(rectangleOf: karateKidNode.size, center: karateKidNode.position))
-        karateKidNode.physicsBody?.affectedByGravity = true
-        karateKidNode.physicsBody?.restitution = 0.01
-        karateKidNode.physicsBody?.linearDamping = 0
-        
-        // Declare regularly used actions
-        actionJumpUp = SKAction.applyForce(self.physicsWorld.gravity, duration: 2)
-        actionJumpDown = SKAction.moveBy(x: 0, y: -200, duration: 1)
-        
-        // Decalaring sequence
-        actionJumpSequence = SKAction.sequence([actionJumpUp, actionJumpDown])
+        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
+
         
     }
     
     // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        karateKidNode.run(actionJumpSequence)
+        //karateKidNode.run(actionJumpSequence)
+        if let body = karateKidNode.physicsBody {
+            body.applyImpulse(CGVector(dx: 0, dy: 10))
+        }
         
     }
     
