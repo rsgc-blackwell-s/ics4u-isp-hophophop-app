@@ -24,7 +24,7 @@ class GameScene: SKScene {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
         // Creating physics boundries
-        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(0), dy: CGFloat(80)))
+        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(30), dy: CGFloat(70)))
         sceneBody.friction = 0
         self.physicsBody = sceneBody
         
@@ -60,7 +60,7 @@ class GameScene: SKScene {
         
         //karateKidNode.run(actionJumpSequence)
         if let body = karateKidNode.physicsBody {
-            body.applyImpulse(CGVector(dx: 0, dy: 10))
+            body.applyImpulse(CGVector(dx: 2, dy: 10))
         }
         
     }
