@@ -50,7 +50,8 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
-        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
+//        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
+        karateKidNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 150, height: 150))
 
         
     }
