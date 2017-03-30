@@ -25,7 +25,7 @@ class GameScene: SKScene {
         
         // Creating physics boundries
         let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(30), dy: CGFloat(70)))
-        sceneBody.friction = 0
+        sceneBody.friction = 0.9
         self.physicsBody = sceneBody
         
         // Making background
@@ -50,18 +50,29 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
-//        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
+        //        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
         karateKidNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 150, height: 150))
-
+        
         
     }
     
     // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        guard let touch = touches.first else {
+            
+            return
+            
+        }
+        
+        let touchLocation = touch.location(in: self)
+        
+        let dX = touchLocation.x - karateKidNode.position.x
+        let dY = touchLocation.y - karateKidNode.position.y
+        
         //karateKidNode.run(actionJumpSequence)
         if let body = karateKidNode.physicsBody {
-            body.applyImpulse(CGVector(dx: 2, dy: 10))
+            body.applyImpulse(CGVector(dx: (dX), dy: (dY)*1.9))
         }
         
     }
