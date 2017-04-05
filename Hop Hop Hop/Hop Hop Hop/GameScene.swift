@@ -9,13 +9,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Variables
     var karateKidNode = SKSpriteNode()
     var actionJumpUp = SKAction()
     var actionJumpDown = SKAction()
     var actionJumpSequence = SKAction()
+    var platformNode = SKSpriteNode()
     
     var scoreNode = SKLabelNode()
     var score = 0
@@ -52,7 +53,7 @@ class GameScene: SKScene {
         // Show score under label
         scoreNode = SKLabelNode(fontNamed: "Futura")
         scoreNode.text = String(score)
-        scoreNode.fontSize = 40
+        scoreNode.fontSize = 50
         scoreNode.fontColor = SKColor.gray
         scoreNode.position = CGPoint(x: self.frame.size.width*0, y: self.frame.size.height*0.35)
         scoreLabelNode.zPosition = 1
@@ -66,8 +67,24 @@ class GameScene: SKScene {
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
-        //        karateKidNode.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(10))
         karateKidNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 150, height: 150))
+        
+        // Making platform
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 100, height: 15)
+        platformNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        platformNode.position = CGPoint(x: 0, y: 0)
+        platformNode.zPosition = 99
+        platformNode.name = "platform"
+        self.addChild(platformNode)
+        
+        let platformBody = CGRect(x: 0, y: 0, width: 100, height: 100)
+        
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody)
+        
+//        platformNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 15))
+//        platformNode.physicsBody?.affectedByGravity = false
+        
     }
     
     func updateScore(){
