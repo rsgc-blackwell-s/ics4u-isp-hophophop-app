@@ -21,7 +21,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreNode = SKLabelNode()
     var score = 0
     
+    var didJump = false
     
+    override func update(_ currentTime: TimeInterval) {
+        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true {
+            didJump = false
+            
+            score = score + 1
+            updateScore()
+        }
+    }
     
     //Initial functions
     override func didMove(to view: SKView) {
@@ -30,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
         // Creating physics boundries
-        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(30), dy: CGFloat(70)))
+        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(-1000), dy: CGFloat(-1000)))
         sceneBody.friction = 0.9
         self.physicsBody = sceneBody
         
@@ -63,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         karateKidNode = SKSpriteNode(imageNamed: "karateKid")
         karateKidNode.size = CGSize(width: 180, height: 180)
         karateKidNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        karateKidNode.position = CGPoint(x: self.frame.size.width*(-0.4), y: self.frame.size.height*(-0.4))
+        karateKidNode.position = CGPoint(x: -250, y: 900)
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
@@ -71,26 +80,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Making platform
         platformNode = SKSpriteNode(imageNamed: "platform")
-        platformNode.size = CGSize(width: 100, height: 15)
-        platformNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        platformNode.position = CGPoint(x: 0, y: 0)
+        platformNode.size = CGSize(width: 200, height: 30)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: -350, y: -400)
         platformNode.zPosition = 99
         platformNode.name = "platform"
         self.addChild(platformNode)
-        
-        let platformBody = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
+        let platformBody = CGRect(x: 0, y: 0, width: 200, height: 30)
         platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody)
-        
-//        platformNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 15))
-//        platformNode.physicsBody?.affectedByGravity = false
-        
+        platformNode.physicsBody!.friction = 1.0
     }
     
     func updateScore(){
         
         scoreNode.text = String(score)
-        
     }
     
     // When screen is touched...
@@ -100,8 +103,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Count touches
-        score = score + 1
-        updateScore()
         
         // Track touch location
         let touchLocation = touch.location(in: self)
@@ -112,13 +113,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Apply an impulse in direction towards touch
         if let body = karateKidNode.physicsBody {
-            body.applyImpulse(CGVector(dx: (dX), dy: (dY)*1.9))
+            body.applyImpulse(CGVector(dx: (dX), dy: (dY)*2.2))
         }
+        
+        didJump = true
+        
     }
     
     // Testing to make sure touch is registered (noticed)
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("test")
         print(score)
+        
+//        if karateKidNode.physicsBody!.velocity.dx == 0 {
+//            score = score + 1
+//            updateScore()
+//        }
     }
 }
