@@ -17,19 +17,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var actionJumpDown = SKAction()
     var actionJumpSequence = SKAction()
     var platformNode = SKSpriteNode()
+    var tapToStart = SKSpriteNode()
+    var tapToStartzPosition = 101
     
     var scoreNode = SKLabelNode()
     var score = 0
     
+    var touchCount = 0
+    
     var didJump = false
     
     override func update(_ currentTime: TimeInterval) {
+        
         if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true {
             didJump = false
             
             score = score + 1
             updateScore()
         }
+        
+        if touchCount >= 1 {
+            tapToStartzPosition = 0
+        }
+        
     }
     
     //Initial functions
@@ -89,6 +99,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let platformBody = CGRect(x: 0, y: 0, width: 200, height: 30)
         platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody)
         platformNode.physicsBody!.friction = 1.0
+        
+//        // Making 'touch-to-start' screen
+//        tapToStart = SKSpriteNode(imageNamed: "tapToStartImage")
+//        tapToStart.size = CGSize (width: self.frame.size.width*0.9, height: self.frame.size.height*0.9)
+//        tapToStart.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//        tapToStart.position = CGPoint(x: 0, y: 0)
+//        tapToStart.zPosition = CGFloat(tapToStartzPosition)
+//        self.addChild(tapToStart)
     }
     
     func updateScore(){
@@ -98,11 +116,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        touchCount = touchCount + 1
+        
+    }
+    
+    // Testing to make sure touch is registered (noticed)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("test")
+        print(score)
+        print(touchCount)
+        
         guard let touch = touches.first else {
             return
         }
-        
-        // Count touches
         
         // Track touch location
         let touchLocation = touch.location(in: self)
@@ -118,16 +145,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         didJump = true
         
-    }
-    
-    // Testing to make sure touch is registered (noticed)
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("test")
-        print(score)
-        
-//        if karateKidNode.physicsBody!.velocity.dx == 0 {
-//            score = score + 1
-//            updateScore()
-//        }
     }
 }
