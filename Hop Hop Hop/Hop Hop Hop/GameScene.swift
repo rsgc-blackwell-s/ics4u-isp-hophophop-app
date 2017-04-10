@@ -18,9 +18,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var actionJumpSequence = SKAction()
     var platformNode = SKSpriteNode()
     var tapToStart = SKSpriteNode()
+    var scoreLabelNode = SKLabelNode()
+    var scoreNode = SKLabelNode()
     var tapToStartzPosition = 101
     
-    var scoreNode = SKLabelNode()
+    let cameraNode = SKCameraNode()
+
     var score = 0
     
     var touchCount = 0
@@ -36,9 +39,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateScore()
         }
         
-        if touchCount >= 1 {
-            tapToStartzPosition = 0
-        }
+//        if touchCount >= 1 {
+//            tapToStartzPosition = 0
+//        }
+        
+        cameraNode.position = karateKidNode.position
+        
+        // Set location of score to camera location
+        scoreLabelNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 200)
+        scoreNode.position = cameraNode.position
         
     }
     
@@ -56,12 +65,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Making background
         let background = SKSpriteNode(imageNamed: "fortuneCookieBackground")
         background.position = CGPoint(x: self.size.height*0, y: self.frame.width*0)
-        background.size = CGSize(width: self.frame.size.width*2.3, height: self.frame.size.height)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        background.size = CGSize(width: self.frame.size.width*4, height: self.frame.size.height*4)
         background.zPosition = -1
         self.addChild(background)
         
         // Making score label
-        let scoreLabelNode = SKLabelNode(fontNamed: "Futura")
+        scoreLabelNode = SKLabelNode(fontNamed: "Futura")
         scoreLabelNode.text = "SCORE"
         scoreLabelNode.fontSize = 60
         scoreLabelNode.fontColor = SKColor.white
@@ -107,6 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        tapToStart.position = CGPoint(x: 0, y: 0)
 //        tapToStart.zPosition = CGFloat(tapToStartzPosition)
 //        self.addChild(tapToStart)
+        
+        addChild(cameraNode)
+        camera = cameraNode
+        cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
     }
     
     func updateScore(){
