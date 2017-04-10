@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabelNode = SKLabelNode()
     var scoreNode = SKLabelNode()
     var tapToStartzPosition = 101
+    var background = SKSpriteNode()
     
     let cameraNode = SKCameraNode()
 
@@ -32,7 +33,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true {
+        print("-----------")
+        print("score: ", score)
+        print("touches: ", touchCount)
+        
+        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 {
             didJump = false
             
             score = score + 1
@@ -48,6 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Set location of score to camera location
         scoreLabelNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 560)
         scoreNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 510)
+        background.position = CGPoint(x: (cameraNode.position.x)-0.1*(karateKidNode.position.x), y: (cameraNode.position.y)-0.1*(karateKidNode.position.y) + 560)
         
     }
     
@@ -58,15 +64,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
         // Creating physics boundries
-        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(-1000), dy: CGFloat(-1000)))
+        let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(-5000), dy: CGFloat(-2000)))
         sceneBody.friction = 0.9
         self.physicsBody = sceneBody
         
         // Making background
-        let background = SKSpriteNode(imageNamed: "fortuneCookieBackground")
+        background = SKSpriteNode(imageNamed: "fortuneCookieBackground")
         background.position = CGPoint(x: self.size.height*0, y: self.frame.width*0)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.size = CGSize(width: self.frame.size.width*4, height: self.frame.size.height*4)
+        background.size = CGSize(width: self.frame.size.width*9, height: self.frame.size.height*2.25)
         background.zPosition = -1
         self.addChild(background)
         
@@ -92,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         karateKidNode = SKSpriteNode(imageNamed: "karateKid")
         karateKidNode.size = CGSize(width: 130, height: 130)
         karateKidNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        karateKidNode.position = CGPoint(x: -250, y: 900)
+        karateKidNode.position = CGPoint(x: -250, y: 500)
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
@@ -100,11 +106,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // PLATFORMS
         
-        // Making platform
+        // Making platform #1
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: -350, y: -400)
+        platformNode.position = CGPoint(x: -350, y: -600)
         platformNode.zPosition = 99
         platformNode.name = "platform1"
         self.addChild(platformNode)
@@ -112,16 +118,112 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody)
         platformNode.physicsBody!.friction = 1.0
         
-        // Making platform
+        // Making platform #2
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 100, y: (Int(arc4random_uniform(400)) - 400))
+        platformNode.position = CGPoint(x: 100, y: (Int(arc4random_uniform(600)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform2"
         self.addChild(platformNode)
         let platformBody2 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
         platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody2)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #3
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 550, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform3"
+        self.addChild(platformNode)
+        let platformBody3 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody3)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #4
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 1000, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform4"
+        self.addChild(platformNode)
+        let platformBody4 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody4)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #5
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 1450, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform5"
+        self.addChild(platformNode)
+        let platformBody5 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody5)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #6
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 1900, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform6"
+        self.addChild(platformNode)
+        let platformBody6 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody6)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #7
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 2350, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform7"
+        self.addChild(platformNode)
+        let platformBody7 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody7)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #8
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 2800, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform8"
+        self.addChild(platformNode)
+        let platformBody8 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody8)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #9
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 3250, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform9"
+        self.addChild(platformNode)
+        let platformBody9 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody9)
+        platformNode.physicsBody!.friction = 1.0
+        
+        // Making platform #10
+        platformNode = SKSpriteNode(imageNamed: "platform")
+        platformNode.size = CGSize(width: 150, height: 22.5)
+        platformNode.anchorPoint = CGPoint(x: 0, y: 0)
+        platformNode.position = CGPoint(x: 3700, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.zPosition = 99
+        platformNode.name = "platform10"
+        self.addChild(platformNode)
+        let platformBody10 = CGRect(x: 0, y: 0, width: 150, height: 22.5)
+        platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody10)
         platformNode.physicsBody!.friction = 1.0
         
 //        // Making 'touch-to-start' screen
@@ -145,15 +247,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        touchCount = touchCount + 1
+        
         
     }
     
     // Testing to make sure touch is registered (noticed)
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("test")
-        print(score)
-        print(touchCount)
         
         guard let touch = touches.first else {
             return
@@ -167,8 +266,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dY = touchLocation.y - karateKidNode.position.y
         
         // Apply an impulse in direction towards touch
-        if let body = karateKidNode.physicsBody {
+        
+        if touchCount == score {
+            if let body = karateKidNode.physicsBody {
             body.applyImpulse(CGVector(dx: (dX), dy: (dY)*2.2))
+            }
+            
+            touchCount = touchCount + 1
         }
         
         didJump = true
