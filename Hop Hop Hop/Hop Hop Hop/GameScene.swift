@@ -26,6 +26,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var youWinNode = SKLabelNode()
     var restartNode = SKLabelNode()
     var playJumpSound = SKAction()
+    var instructionsNode = SKLabelNode()
+    var instructionsNode2 = SKLabelNode()
+    var oneBlockAtaTimeNode = SKLabelNode()
+    var jumpFartherNode = SKLabelNode()
     
     let cameraNode = SKCameraNode()
 
@@ -53,11 +57,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateScore()
         }
         
+        // If player doesn;t jump far enough
         if Int((karateKidNode.position.x)+250) < ((touchCount*450)-150) && karateKidNode.physicsBody!.velocity.dx == 0 && touchCount >= 1 {
+            
             gameOverCount = gameOverCount + 1
+            jumpFartherNode.zPosition = 200
+            jumpFartherNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y-60)
+        }
+        
+        // If player jumps too far
+        if Int((karateKidNode.position.x)+250) > ((touchCount*450)+150) && karateKidNode.physicsBody!.velocity.dx == 0 && touchCount >= 1 {
+            
+            gameOverCount = gameOverCount + 1
+            oneBlockAtaTimeNode.zPosition = 200
+            oneBlockAtaTimeNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y-60)
         }
         
         if Int(karateKidNode.position.y) < -1000 {
+            
             gameOverCount = gameOverCount + 1
         }
         
@@ -92,6 +109,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 510)
         background.position = CGPoint(x: (cameraNode.position.x)-0.1*(karateKidNode.position.x), y: (cameraNode.position.y)-0.1*(karateKidNode.position.y) + 560)
         
+        if touchCount >= 1 {
+//            instructionsNode.zPosition = -10
+        }
+        
     }
     
     //Initial functions
@@ -101,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playJumpSound = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
         
         // Creating physics effects
-        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -7.8)
         
         // Creating physics boundries
         let sceneBody = SKPhysicsBody(edgeLoopFrom: self.frame.insetBy(dx: CGFloat(-5000), dy: CGFloat(-2000)))
@@ -143,6 +164,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverNode.zPosition = -5
         self.addChild(gameOverNode)
         
+        // Making ONE BLOCK AT A TIME label
+        oneBlockAtaTimeNode = SKLabelNode(fontNamed: "Futura Bold")
+        oneBlockAtaTimeNode.text = String("ONE BLOCK AT A TIME!")
+        oneBlockAtaTimeNode.fontSize = 45
+        oneBlockAtaTimeNode.fontColor = SKColor.brown
+        oneBlockAtaTimeNode.position = CGPoint(x: self.frame.size.width*0, y: gameOverNode.position.y)
+        oneBlockAtaTimeNode.zPosition = -5
+        self.addChild(oneBlockAtaTimeNode)
+        
+        // Making JUMP FARTHER label
+        jumpFartherNode = SKLabelNode(fontNamed: "Futura Bold")
+        jumpFartherNode.text = String("JUMP FARTHER!")
+        jumpFartherNode.fontSize = 45
+        jumpFartherNode.fontColor = SKColor.brown
+        jumpFartherNode.position = CGPoint(x: self.frame.size.width*0, y: gameOverNode.position.y)
+        jumpFartherNode.zPosition = -6
+        self.addChild(jumpFartherNode)
+        
         // Making RESTART button
         restartNode = SKLabelNode(fontNamed: "Futura Bold")
         restartNode.text = String("CLICK TO RESTART")
@@ -161,11 +200,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         youWinNode.zPosition = -5
         self.addChild(youWinNode)
         
+        // Making Instructions
+        instructionsNode = SKLabelNode(fontNamed: "Futura Bold")
+        instructionsNode.text = String("TAP THE SCREEN TO JUMP,")
+        instructionsNode.fontSize = 20
+        instructionsNode.fontColor = SKColor.gray
+        instructionsNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        instructionsNode.position = CGPoint(x: -350, y: -650)
+        instructionsNode.zPosition = 200
+        self.addChild(instructionsNode)
+        
+        // Making Instructions
+        instructionsNode2 = SKLabelNode(fontNamed: "Futura Bold")
+        instructionsNode2.text = String("THE FARTHER YOU TAP - THE FARTHER THE JUMP!")
+        instructionsNode2.fontSize = 20
+        instructionsNode2.fontColor = SKColor.gray
+        instructionsNode2.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        instructionsNode2.position = CGPoint(x: -350, y: -680)
+        instructionsNode2.zPosition = 200
+        self.addChild(instructionsNode2)
+        
         // Making game character
         karateKidNode = SKSpriteNode(imageNamed: "karateKid")
         karateKidNode.size = CGSize(width: 130, height: 130)
         karateKidNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        karateKidNode.position = CGPoint(x: -250, y: 100)
+        karateKidNode.position = CGPoint(x: -270, y: 100)
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
@@ -333,7 +392,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Apply an impulse in direction towards touch
         if touchCount == score {
             if let body = karateKidNode.physicsBody {
-            body.applyImpulse(CGVector(dx: (dX), dy: (dY)*2.2))
+            body.applyImpulse(CGVector(dx: (dX), dy: (dY)*1.5))
             }
             print("test")
             touchCount = touchCount + 1
