@@ -22,6 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreNode = SKLabelNode()
     var tapToStartzPosition = 101
     var background = SKSpriteNode()
+    var gameOverNode = SKLabelNode()
+    var youWinNode = SKLabelNode()
     
     let cameraNode = SKCameraNode()
 
@@ -31,6 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var didJump = false
     
+    // Update function
     override func update(_ currentTime: TimeInterval) {
         
         print("-----------")
@@ -44,9 +47,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateScore()
         }
         
-//        if touchCount >= 1 {
-//            tapToStartzPosition = 0
-//        }
+        // Showing GAME OVER node
+        gameOverNode.zPosition = -5
+        
+        if karateKidNode.position.y < -1000 {
+            
+            gameOverNode.zPosition = 200
+            gameOverNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
+        }
+        
+        // Showing YOU WIN node
+        youWinNode.zPosition = -5
+        
+        if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 {
+            youWinNode.zPosition = 200
+            youWinNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
+        }
         
         cameraNode.position = CGPoint(x: karateKidNode.position.x + 200, y: karateKidNode.position.y + 300)
         
@@ -59,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Initial functions
     override func didMove(to view: SKView) {
-        
+            
         // Creating physics effects
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
@@ -77,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(background)
         
         // Making score label
-        scoreLabelNode = SKLabelNode(fontNamed: "Futura")
+        scoreLabelNode = SKLabelNode(fontNamed: "Futura Bold")
         scoreLabelNode.text = "SCORE"
         scoreLabelNode.fontSize = 60
         scoreLabelNode.fontColor = SKColor.white
@@ -86,13 +102,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabelNode)
         
         // Show score under label
-        scoreNode = SKLabelNode(fontNamed: "Futura")
+        scoreNode = SKLabelNode(fontNamed: "Futura Bold")
         scoreNode.text = String(score)
         scoreNode.fontSize = 50
         scoreNode.fontColor = SKColor.gray
         scoreNode.position = CGPoint(x: self.frame.size.width*0, y: self.frame.size.height*0.35)
         scoreLabelNode.zPosition = 1
         self.addChild(scoreNode)
+        
+        // Making GAME OVER label
+        gameOverNode = SKLabelNode(fontNamed: "Futura Bold")
+        gameOverNode.text = String("GAME OVER!")
+        gameOverNode.fontSize = 100
+        gameOverNode.fontColor = SKColor.white
+        gameOverNode.position = CGPoint(x: self.frame.size.width*0, y: self.frame.size.height*0)
+        gameOverNode.zPosition = -5
+        self.addChild(gameOverNode)
+        
+        // Making YOU WIN label
+        youWinNode = SKLabelNode(fontNamed: "Futura Bold")
+        youWinNode.text = String("YOU WIN!")
+        youWinNode.fontSize = 100
+        youWinNode.fontColor = SKColor.white
+        youWinNode.position = CGPoint(x: self.frame.size.width*0, y: self.frame.size.height*0)
+        youWinNode.zPosition = -5
+        self.addChild(youWinNode)
         
         // Making game character
         karateKidNode = SKSpriteNode(imageNamed: "karateKid")

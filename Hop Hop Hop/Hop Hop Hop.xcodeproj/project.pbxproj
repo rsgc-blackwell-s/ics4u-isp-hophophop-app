@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0B8E801E9C7F03000666D3 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 3F0B8E7F1E9C7F03000666D3 /* sounds */; };
 		3F6674D31E69B16200FA10F9 /* InitialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6674D21E69B16200FA10F9 /* InitialScene.swift */; };
 		3FD97DC61E51F79800130242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD97DC51E51F79800130242 /* AppDelegate.swift */; };
 		3FD97DC81E51F79800130242 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FD97DC71E51F79800130242 /* GameScene.sks */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0B8E7F1E9C7F03000666D3 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		3F6674D21E69B16200FA10F9 /* InitialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScene.swift; sourceTree = "<group>"; };
 		3FD97DC21E51F79800130242 /* Hop Hop Hop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hop Hop Hop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD97DC51E51F79800130242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				3FD97DC71E51F79800130242 /* GameScene.sks */,
 				3FD97DC91E51F79800130242 /* Actions.sks */,
 				3FD97DCB1E51F79800130242 /* GameScene.swift */,
+				3F0B8E7F1E9C7F03000666D3 /* sounds */,
 				3F6674D21E69B16200FA10F9 /* InitialScene.swift */,
 				3FD97DCD1E51F79800130242 /* GameViewController.swift */,
 				3FD97DCF1E51F79800130242 /* Main.storyboard */,
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0B8E801E9C7F03000666D3 /* sounds in Resources */,
 				3FD97DEB1E52B02E00130242 /* HHH-gameover.jpeg in Resources */,
 				3FD97DD11E51F79800130242 /* Main.storyboard in Resources */,
 				3FD97DE71E52B01B00130242 /* HHH-initial.jpeg in Resources */,
