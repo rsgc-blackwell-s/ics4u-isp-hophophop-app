@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("gameOver: ", gameOverCount)
         
         // Score increaser
-        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 && Int(karateKidNode.position.x)+250 < (touchCount*450)-150 {
+        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 && Int(karateKidNode.position.x)+250 > (touchCount*450)-150 {
             didJump = false
             
             score = score + 1
