@@ -24,6 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background = SKSpriteNode()
     var gameOverNode = SKLabelNode()
     var youWinNode = SKLabelNode()
+    var restartNode = SKLabelNode()
+    var playJumpSound = SKAction()
     
     let cameraNode = SKCameraNode()
 
@@ -36,10 +38,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Update function
     override func update(_ currentTime: TimeInterval) {
         
-        print("-----------")
-        print("score: ", score)
-        print("touches: ", touchCount)
-        
+//        print("-----------")
+//        print("score: ", score)
+//        print("touches: ", touchCount)
+//        
         if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 {
             didJump = false
             
@@ -54,6 +56,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             gameOverNode.zPosition = 200
             gameOverNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
+            
+            restartNode.zPosition = 200
+            restartNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y - 450)
         }
         
         // Showing YOU WIN node
@@ -62,6 +67,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 {
             youWinNode.zPosition = 200
             youWinNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
+            
+            restartNode.zPosition = 200
+            restartNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y - 450)
         }
         
         cameraNode.position = CGPoint(x: karateKidNode.position.x + 200, y: karateKidNode.position.y + 300)
@@ -75,7 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Initial functions
     override func didMove(to view: SKView) {
-            
+        
+        // Initializing sound effect
+        playJumpSound = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
+        
         // Creating physics effects
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
@@ -119,6 +130,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverNode.zPosition = -5
         self.addChild(gameOverNode)
         
+        // Making RESTART button
+        restartNode = SKLabelNode(fontNamed: "Futura Bold")
+        restartNode.text = String("CLICK TO RESTART")
+        restartNode.fontSize = 60
+        restartNode.fontColor = SKColor.gray
+        restartNode.position = CGPoint(x: self.frame.size.width*0, y: self.frame.size.height*0)
+        restartNode.zPosition = -5
+        self.addChild(restartNode)
+        
         // Making YOU WIN label
         youWinNode = SKLabelNode(fontNamed: "Futura Bold")
         youWinNode.text = String("YOU WIN!")
@@ -132,7 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         karateKidNode = SKSpriteNode(imageNamed: "karateKid")
         karateKidNode.size = CGSize(width: 130, height: 130)
         karateKidNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        karateKidNode.position = CGPoint(x: -250, y: 500)
+        karateKidNode.position = CGPoint(x: -250, y: 100)
         karateKidNode.zPosition = 100
         karateKidNode.name = "karateKid"
         self.addChild(karateKidNode)
@@ -281,8 +301,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // When screen is touched...
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        
-        
     }
     
     // Testing to make sure touch is registered (noticed)
@@ -305,8 +323,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let body = karateKidNode.physicsBody {
             body.applyImpulse(CGVector(dx: (dX), dy: (dY)*2.2))
             }
-            
+            print("test")
             touchCount = touchCount + 1
+            
+            self.run(playJumpSound)
+        }
+        
+        if touchCount == score + 1 && restartNode.zPosition == 200 {
+            
+//            score = 0
+//            touchCount = 0
+//            karateKidNode.position = CGPoint(x: -250, y: 500)
+//            gameOverNode.zPosition = -5
+//            restartNode.zPosition = -5
+            
+            self.removeAllChildren()
+            self.removeAllActions()
+            
+            let gameScene = GameScene(size: self.size)
+            let transition = SKTransition.crossFade(withDuration: 0.3)
+            gameScene.scaleMode = SKSceneScaleMode.aspectFill
+            self.scene!.view?.presentScene(gameScene, transition: transition)
+            
         }
         
         didJump = true
