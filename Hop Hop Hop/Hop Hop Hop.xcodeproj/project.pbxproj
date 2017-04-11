@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F0B8E7F1E9C7F03000666D3 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
+		3F0B8E7F1E9C7F03000666D3 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = "Hop Hop Hop/sounds"; sourceTree = "<group>"; };
 		3F6674D21E69B16200FA10F9 /* InitialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScene.swift; sourceTree = "<group>"; };
 		3FD97DC21E51F79800130242 /* Hop Hop Hop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hop Hop Hop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD97DC51E51F79800130242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F3CF1FB1E9D2D5900ABCEC9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3F0B8E7F1E9C7F03000666D3 /* sounds */,
+			);
+			name = Sounds;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		3FD97DB91E51F79800130242 = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +88,13 @@
 				3FD97DC71E51F79800130242 /* GameScene.sks */,
 				3FD97DC91E51F79800130242 /* Actions.sks */,
 				3FD97DCB1E51F79800130242 /* GameScene.swift */,
-				3F0B8E7F1E9C7F03000666D3 /* sounds */,
 				3F6674D21E69B16200FA10F9 /* InitialScene.swift */,
 				3FD97DCD1E51F79800130242 /* GameViewController.swift */,
 				3FD97DCF1E51F79800130242 /* Main.storyboard */,
 				3FD97DD21E51F79800130242 /* Assets.xcassets */,
 				3FD97DD41E51F79800130242 /* LaunchScreen.storyboard */,
 				3FD97DD71E51F79800130242 /* Info.plist */,
+				3F3CF1FB1E9D2D5900ABCEC9 /* Sounds */,
 			);
 			path = "Hop Hop Hop";
 			sourceTree = "<group>";

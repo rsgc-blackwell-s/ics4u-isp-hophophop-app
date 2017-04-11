@@ -35,24 +35,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var didJump = false
     
+    var gameOverCount = 0
+    
     // Update function
     override func update(_ currentTime: TimeInterval) {
         
-//        print("-----------")
-//        print("score: ", score)
-//        print("touches: ", touchCount)
-//        
-        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 {
+        print("-----------")
+        print("score: ", score)
+        print("touches: ", touchCount)
+        print("gameOver: ", gameOverCount)
+        
+        // Score increaser
+        if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 && Int(karateKidNode.position.x)+250 < (touchCount*450)-150 {
             didJump = false
             
             score = score + 1
             updateScore()
         }
         
+        if Int((karateKidNode.position.x)+250) < ((touchCount*450)-150) && karateKidNode.physicsBody!.velocity.dx == 0 && touchCount >= 1 {
+            gameOverCount = gameOverCount + 1
+        }
+        
+        if Int(karateKidNode.position.y) < -1000 {
+            gameOverCount = gameOverCount + 1
+        }
+        
         // Showing GAME OVER node
         gameOverNode.zPosition = -5
         
-        if karateKidNode.position.y < -1000 {
+        if gameOverCount >= 1 {
             
             gameOverNode.zPosition = 200
             gameOverNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
@@ -64,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Showing YOU WIN node
         youWinNode.zPosition = -5
         
-        if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 {
+        if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 && karateKidNode.physicsBody!.velocity.dx == 0 {
             youWinNode.zPosition = 200
             youWinNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
             
@@ -72,7 +84,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             restartNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y - 450)
         }
         
-        cameraNode.position = CGPoint(x: karateKidNode.position.x + 200, y: karateKidNode.position.y + 300)
+        // Set camera location
+        cameraNode.position = CGPoint(x: karateKidNode.position.x + 200, y: (karateKidNode.position.y + 300) - karateKidNode.position.y*0.2)
         
         // Set location of score to camera location
         scoreLabelNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 560)
@@ -318,7 +331,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dY = touchLocation.y - karateKidNode.position.y
         
         // Apply an impulse in direction towards touch
-        
         if touchCount == score {
             if let body = karateKidNode.physicsBody {
             body.applyImpulse(CGVector(dx: (dX), dy: (dY)*2.2))
@@ -327,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             touchCount = touchCount + 1
             
             self.run(playJumpSound)
+            
         }
         
         if touchCount == score + 1 && restartNode.zPosition == 200 {
