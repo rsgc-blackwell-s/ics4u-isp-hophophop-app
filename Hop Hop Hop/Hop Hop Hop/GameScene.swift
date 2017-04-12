@@ -43,7 +43,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Update function
     override func update(_ currentTime: TimeInterval) {
-        
+       
+        // Print statements
         print("-----------")
         print("score: ", score)
         print("touches: ", touchCount)
@@ -51,14 +52,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Score increaser
         if karateKidNode.physicsBody!.velocity.dx == 0 && didJump == true && karateKidNode.position.y >= -600 && Int(karateKidNode.position.x)+250 > (touchCount*450)-150 {
+           
             didJump = false
             
             score = score + 1
             updateScore()
         }
         
-        // If player doesn;t jump far enough
-        if Int((karateKidNode.position.x)+250) < ((touchCount*450)-150) && karateKidNode.physicsBody!.velocity.dx == 0 && touchCount >= 1 {
+        // If player doesn't jump far enough
+        if Int((karateKidNode.position.x)+250) < ((touchCount*450)-150) && karateKidNode.physicsBody!.velocity.dx == 0 && touchCount >= 1 && karateKidNode.position.y > -700 {
             
             gameOverCount = gameOverCount + 1
             jumpFartherNode.zPosition = 200
@@ -73,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             oneBlockAtaTimeNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y-60)
         }
         
+        // If player falls too low, end the game
         if Int(karateKidNode.position.y) < -1000 {
             
             gameOverCount = gameOverCount + 1
@@ -93,6 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Showing YOU WIN node
         youWinNode.zPosition = -5
         
+        //
         if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 && karateKidNode.physicsBody!.velocity.dx == 0 {
             youWinNode.zPosition = 200
             youWinNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
@@ -248,7 +252,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 100, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 100, y: (Int(arc4random_uniform(100)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform2"
         self.addChild(platformNode)
@@ -260,7 +264,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 550, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 550, y: (Int(arc4random_uniform(100)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform3"
         self.addChild(platformNode)
@@ -272,7 +276,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 1000, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 1000, y: (Int(arc4random_uniform(200)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform4"
         self.addChild(platformNode)
@@ -284,7 +288,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 1450, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 1450, y: (Int(arc4random_uniform(200)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform5"
         self.addChild(platformNode)
@@ -296,7 +300,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 1900, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 1900, y: (Int(arc4random_uniform(300)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform6"
         self.addChild(platformNode)
@@ -308,7 +312,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 2350, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 2350, y: (Int(arc4random_uniform(300)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform7"
         self.addChild(platformNode)
@@ -320,7 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 2800, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 2800, y: (Int(arc4random_uniform(400)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform8"
         self.addChild(platformNode)
@@ -332,7 +336,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode = SKSpriteNode(imageNamed: "platform")
         platformNode.size = CGSize(width: 150, height: 22.5)
         platformNode.anchorPoint = CGPoint(x: 0, y: 0)
-        platformNode.position = CGPoint(x: 3250, y: (Int(arc4random_uniform(600)) - 600))
+        platformNode.position = CGPoint(x: 3250, y: (Int(arc4random_uniform(500)) - 600))
         platformNode.zPosition = 99
         platformNode.name = "platform9"
         self.addChild(platformNode)
