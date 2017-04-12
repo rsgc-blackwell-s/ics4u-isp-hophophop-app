@@ -84,6 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Showing GAME OVER node
         gameOverNode.zPosition = -5
         
+        // If game is over
         if gameOverCount >= 1 {
             
             gameOverNode.zPosition = 200
@@ -96,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Showing YOU WIN node
         youWinNode.zPosition = -5
         
-        //
+        // If player reaches end of game (10th chopstick)
         if karateKidNode.position.x > 3600 && karateKidNode.position.y >= -600 && karateKidNode.physicsBody!.velocity.dx == 0 {
             youWinNode.zPosition = 200
             youWinNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y)
@@ -112,10 +113,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabelNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 560)
         scoreNode.position = CGPoint(x: cameraNode.position.x, y: cameraNode.position.y + 510)
         background.position = CGPoint(x: (cameraNode.position.x)-0.1*(karateKidNode.position.x), y: (cameraNode.position.y)-0.1*(karateKidNode.position.y) + 560)
-        
-        if touchCount >= 1 {
-//            instructionsNode.zPosition = -10
-        }
         
     }
     
@@ -356,22 +353,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformNode.physicsBody = SKPhysicsBody(edgeLoopFrom: platformBody10)
         platformNode.physicsBody!.friction = 1.0
         
-//        // Making 'touch-to-start' screen
-//        tapToStart = SKSpriteNode(imageNamed: "tapToStartImage")
-//        tapToStart.size = CGSize (width: self.frame.size.width*0.9, height: self.frame.size.height*0.9)
-//        tapToStart.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        tapToStart.position = CGPoint(x: 0, y: 0)
-//        tapToStart.zPosition = CGFloat(tapToStartzPosition)
-//        self.addChild(tapToStart)
-        
+        // Adding camera node
         addChild(cameraNode)
         camera = cameraNode
         cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
     }
     
+    // Function that is always updating
     func updateScore(){
-        
         scoreNode.text = String(score)
+        
     }
     
     // When screen is touched...
@@ -379,11 +370,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    // Testing to make sure touch is registered (noticed)
+    // When touch ends
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         guard let touch = touches.first else {
             return
+            
         }
         
         // Track touch location
@@ -395,9 +386,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Apply an impulse in direction towards touch
         if touchCount == score {
+            
             if let body = karateKidNode.physicsBody {
             body.applyImpulse(CGVector(dx: (dX), dy: (dY)*1.5))
             }
+            
             print("test")
             touchCount = touchCount + 1
             
@@ -405,14 +398,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
+        // Restarting game when screen is tapped
         if touchCount == score + 1 && restartNode.zPosition == 200 {
-            
-//            score = 0
-//            touchCount = 0
-//            karateKidNode.position = CGPoint(x: -250, y: 500)
-//            gameOverNode.zPosition = -5
-//            restartNode.zPosition = -5
-            
             self.removeAllChildren()
             self.removeAllActions()
             
